@@ -1,0 +1,27 @@
+# SQL 설정
+spring:
+  datasource:
+    url: jdbc:mysql://database-lolo.ctxxp1rmh1dv.ap-northeast-2.rds.amazonaws.com/challengePJT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: 'admin'
+    password: 'sacred607!'
+
+# XML 설정
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  
+  
+# 카카오 로그인 설정
+kakao:
+  client:
+    id: b19918d790317e3b9c218109a3901c48
+    secret: 5osHMxSIqLx1ZP16UuI9Ru22x5z32JHY
+  # 프론트 주소
+  redirect:
+    url: http://localhost:3000/oauth2/code/kakao
+#    url: http://ec2-52-78-6-107.ap-northeast-2.compute.amazonaws.com:3000/oauth2/code/kakao
+
+jwt:
+  issuer: challangePJT
+  secret_key: challangePJT
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mappers.MemberMapper">
+
+    <select id="findByEmail" parameterType="String" resultType="org.example.domain.Member">
+        select * from member <where> email = #{email} </where>
+    </select>
+
+    <select id="findByMemberId" parameterType="int" resultType="org.example.domain.Member">
+        select * from member <where> member_id = #{member_id} </where>
+    </select>
+
+    <insert id="addMember" parameterType="org.example.domain.Member">
+        insert into member (nickname, height, weight, name, birth, gender, phone_number, email, cash, point, sign_date)
+        values (#{nickname}, #{height}, #{weight}, #{name}, #{birth}, #{gender}, #{phone_number}, #{email}, #{cash}, #{point}, #{sign_date})
+        <selectKey resultType="int" keyProperty="member_id" order="AFTER">
+            select MAX(member_id) from member
+        </selectKey>
+    </insert>
+
+</mapper>

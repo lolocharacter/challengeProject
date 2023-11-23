@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mappers.SocialMapper">
+
+    <select id="findSocialBySocialAccount" parameterType="int" resultType="org.example.domain.Social">
+        select * from social <where> social_account = #{social_account} </where>
+    </select>
+
+    <insert id="addSocial" parameterType="org.example.domain.Social">
+        insert into social (social_account, social_email, member_id)
+        values (#{social_account}, #{social_email}, #{member_id})
+    </insert>
+</mapper>

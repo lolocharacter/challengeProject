@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'org.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web' // 스프링 필수
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'  //mybatis
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.2'  //mybatis
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1' // import json
+
+    implementation 'org.springframework.boot:spring-boot-starter-security' // security cors 에러 나게 하느넫
+
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'    //jwt
+    implementation 'javax.xml.bind:jaxb-api:2.3.1' //jwt
+
+    runtimeOnly 'com.mysql:mysql-connector-j'  // MySQL 8.0.31 이후 버전
+
+    compileOnly 'org.projectlombok:lombok' // 롬복
+    annotationProcessor 'org.projectlombok:lombok' // 롬복
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // 스프링 필수
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
